@@ -1,0 +1,227 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css"> <!-- Ensure you link your CSS -->
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total">
+        <h3>Total: ₹<span id="cartTotal">0</span></h3>
+    </div>
+    <script>
+        // cart.js
+    document.addEventListener("DOMContentLoaded", () => {
+        const cartItemsContainer = document.getElementById("cartItems");
+        const cartTotalElement = document.getElementById("cartTotal");
+        
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+    
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = "<p>Your cart is empty</p>";
+        } else {
+            cart.forEach(item => {
+                total += item.price;
+    
+                let itemDiv = document.createElement("div");
+                itemDiv.classList.add("cart-item");
+    
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div>
+                        <h4>${item.brand}</h4>
+                        <p>${item.name}</p>
+                        <p>Price: ₹${item.price}</p>
+                    </div>
+                `;
+    
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+    
+        cartTotalElement.innerText = total;
+    });
+    
+    </script>
+
+<footer class="section-p1">
+  
+    <div class="col">
+    <a href="#"><img class="logo" src=""></a>
+        <h4>Contact</h4>
+        <p><strong>Phone:</strong>+91 9897XXXXXXXX</p>
+           <div class="follow">
+             <h4>Follow Us</h4>
+             <div class="icon">
+               <i class="fab fa-facebook-f"></i>
+               <i class="fab fa-instagram"></i>
+               <i class="fab fa-twitter"></i>
+               <i class="fab fa-youtube"></i>
+               <i class="fab fa-pinterest-p"></i>
+                </div>
+           </div>
+           </div>
+    
+    
+          
+        <div class="sec">   
+        <div class="col">
+          <h4>About</h4>
+          <a href="#">About Us</a>
+          <a href="#">Delivery Information</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and Condition</a>
+          <a href="#">Contact Us</a>
+       </div>
+        
+        <div class="col">
+          <h4>My Account</h4>
+          <a href="#">Sign In</a>
+          <a href="#">View Cart</a>
+          <a href="#">My Account</a>
+          <a href="#">My Wishlist</a>
+          <a href="#">Track my Order</a>
+          <a href="#">Help</a>
+            
+        </div>
+    
+      
+      <div class="coypright">
+          <p> © 2023 All rights reserved! made by Tunrayo </p>
+        </div>
+      
+     </footer>
+</body>
+</html>
+
+
+
+
+<style>
+    /* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background: white;
+}
+
+.cart-item img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.cart-total {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+}
+
+
+footer .col{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  margin-left: 50px
+
+}
+
+footer .sec{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  
+}
+
+footer .logo{
+  margin-bottom: 20px;
+}
+
+footer h4{
+  font-size: 14px;
+  padding-bottom: 20px
+}
+
+footer p{
+  font-size: 13px;
+  margin: 0 0 8px 0;
+}
+
+
+footer a{
+  font-size: 13px;
+  text-decoration: none;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+footer .follow{
+  margin-top: 20px
+}
+
+footer .follow i{
+  color: #465b52;
+  padding-right: 5px;
+  cursor: pointer;
+  
+}
+
+footer .follow i:hover, footer a:hover {
+  color: #088178;
+ 
+}
+
+footer .install .row img{
+  border: 1px solid #088178; 
+  border-radius: 6px;
+    
+}
+
+footer .install img{
+  margin: 10px 0 15px 0
+}
+
+
+footer .copyright{
+  width: 100%;
+  text-align: center
+   
+}
+
+
+</style>
